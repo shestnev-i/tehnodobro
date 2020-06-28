@@ -1,0 +1,161 @@
+$blue: #2B5E5E
+$black: #111
+$dark: #444
+$gray: #333
+$white: #fff
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700|Play:400,700')
+
+*
+	box-sizing: border-box
+
+html
+	font-size: 10px
+	font-family: 'Montserrat', sans-serif
+	font-weight: 500
+
+body
+	margin: 0
+	padding: 0
+	background-size: contain
+	font-size: 16px
+	color: $dark
+
+a:active, a:focus, input, textarea, textarea:active, input:active, input:focus, button:active, button:focus, img, select, label
+	outline: none
+
+a
+	color: $blue
+	text-decoration: none
+	transition: .5s
+	&:hover
+		text-decoration: underline
+
+button::-moz-focus-inner
+	border: 0
+
+h1,h2,h3,h4,h5,h6
+	margin: 0
+	padding: 0
+
+img
+	max-width: 100%
+	max-height: 100%
+	height: auto
+	width:  auto !important
+	vertical-align: top
+
+svg
+	max-height: 24px
+
+input, label, span
+	&:-webkit-autofill
+		-webkit-animation-name: autofill
+		-webkit-animation-fill-mode: both
+
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button
+	-webkit-appearance: none
+input[type='number']
+	-moz-appearance: textfield
+
+
+.wrap-full
+	display: flex
+	width: 100%
+	margin: 0 auto
+	padding: 0
+
+.wrap
+	display: flex
+	flex-wrap: wrap
+	width: 100%
+	max-width: 1200px
+	margin-right: auto
+	margin-left: auto
+	@media screen and ( max-width: 500px )
+		padding: 1rem
+
+.right
+	justify-content: flex-end
+	text-align: right
+	align-items: flex-end !important
+
+.header
+	display: flex
+	align-items: center
+	justify-content: space-between
+	&-info
+		flex-basis: 50%
+		margin-left: 10rem
+		@media screen and ( max-width: 500px )
+			flex-basis: 100%
+			margin: 1rem
+	&-frame
+		clip-path: polygon(0 0,100% 0%,100% 100%,30% 100%)
+		@media screen and ( max-width: 500px )
+			display: none
+			
+.title
+	font-weight: bold
+	font-size: 24px
+	display: flex
+	align-items: center
+	z-index: 9
+	@media screen and ( max-width: 500px )
+		font-size: 18px
+	&--white
+		color: $white
+	&--big
+		font-size: 36px
+		@media screen and ( max-width: 500px )
+			font-size: 24px
+.section
+	display: flex
+	flex-wrap: wrap
+	min-height: 60px
+	position: relative
+	&--center
+		justify-content: center
+		text-align: center
+	&--dark
+		background: $dark
+		position: relative
+	&--overlay
+		&::before
+			width: 100%
+			height: 100%
+			content: ''
+			background: rgba($blue,.7)
+			position: absolute
+			top: 0
+			left: 0
+
+.footer
+	background: $dark
+	display: flex
+	align-items: center
+	color: $white
+	height: 60px
+
+.col-6
+	flex-basis: 50%
+	display: flex
+	align-items: center
+	justify-content: center
+	flex-direction: column
+	@media screen and ( max-width: 500px )
+		flex-basis: 100%
+
+.sc-bg3
+	background: url("../img/bg_03.jpg") no-repeat center center
+	background-size: cover
+	background-attachment: fixed
+	height: 400px
+.sc-bg5
+	background: url("../img/bg_05.jpg") no-repeat center center
+	background-size: cover
+	background-attachment: fixed
+	height: 400px
+
+p
+	flex-basis: 100%

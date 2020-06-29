@@ -1,9 +1,10 @@
-$blue: #2B5E5E
+$green: #2B5E5E
+$yellow: #EEE82C
 $black: #111
 $dark: #444
 $gray: #333
 $white: #fff
-
+$wrap: 1200
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700|Play:400,700')
 
 *
@@ -25,7 +26,7 @@ a:active, a:focus, input, textarea, textarea:active, input:active, input:focus, 
 	outline: none
 
 a
-	color: $blue
+	color: $green
 	text-decoration: none
 	transition: .5s
 	&:hover
@@ -58,7 +59,6 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button
 input[type='number']
 	-moz-appearance: textfield
 
-
 .wrap-full
 	display: flex
 	width: 100%
@@ -69,32 +69,84 @@ input[type='number']
 	display: flex
 	flex-wrap: wrap
 	width: 100%
-	max-width: 1200px
+	max-width: $wrap+px
 	margin-right: auto
 	margin-left: auto
 	@media screen and ( max-width: 500px )
 		padding: 1rem
+
+.main
+	margin-top: 60px
+	@media screen and ( max-width: 500px )
+		margin-top: 0
 
 .right
 	justify-content: flex-end
 	text-align: right
 	align-items: flex-end !important
 
+.clip-right
+	align-items: flex-end
+	clip-path: polygon(13% 0%,100% 0%,100% 100%,25% 100%)
+.clip-left
+	align-items: flex-start
+	clip-path: polygon(0% 0%,100% 0%,85% 100%,0% 100%)
+
+.dark
+	background: $dark
+
+.mt
+	margin-top: 2rem
+
+header
+	position: fixed
+	top: 0
+	z-index: 10
+	box-shadow: 0 .5rem 1rem rgba($dark,.2)
+	@media screen and ( max-width: 500px )
+		display: none !important
 .header
 	display: flex
 	align-items: center
 	justify-content: space-between
-	&-info
-		flex-basis: 50%
-		margin-left: 10rem
-		@media screen and ( max-width: 500px )
-			flex-basis: 100%
-			margin: 1rem
-	&-frame
-		clip-path: polygon(0 0,100% 0%,100% 100%,30% 100%)
-		@media screen and ( max-width: 500px )
-			display: none
-			
+	color: $white
+	height: 60px
+	&__logo
+		height: 40px
+		filter: brightness(10)
+	&__title
+		font-weight: bold
+	&__cta
+		color: $dark
+		font-weight: bold
+		padding: 1rem 2rem
+		background: darken($yellow,10)
+		border-radius: 0.5rem
+		cursor: pointer
+		transition: 0.5s
+		&:hover
+			background: $yellow
+			box-shadow: 0 0 .5rem $yellow
+
+.header-menu
+	display: flex
+	list-style: none
+	padding: 0
+	margin: 0
+	&__item
+		a
+			color: $white
+			&:hover
+				color: $yellow
+				text-decoration: none
+		&:not(:last-child)
+			margin-right: 2rem
+
+.logotype
+	display: flex !important
+	@media screen and ( max-width: 500px )
+		padding: 1rem
+		
 .title
 	font-weight: bold
 	font-size: 24px
@@ -103,32 +155,50 @@ input[type='number']
 	z-index: 9
 	@media screen and ( max-width: 500px )
 		font-size: 18px
+		padding: 1rem
+		text-align: center
 	&--white
 		color: $white
 	&--big
-		font-size: 36px
+		font-size: 32px
 		@media screen and ( max-width: 500px )
 			font-size: 24px
 .section
 	display: flex
 	flex-wrap: wrap
-	min-height: 60px
+	min-height: 120px
 	position: relative
 	&--center
 		justify-content: center
 		text-align: center
 	&--dark
-		background: $dark
+		background: $green
 		position: relative
 	&--overlay
 		&::before
 			width: 100%
 			height: 100%
 			content: ''
-			background: rgba($blue,.7)
+			background: rgba($green,.7)
 			position: absolute
 			top: 0
 			left: 0
+
+.sc-bg
+	background-position: center center
+	background-repeat: no-repeat
+	background-size: cover
+	background-attachment: fixed
+	height: 400px
+
+.column
+	flex-basis: 50%
+	display: flex
+	justify-content: center
+	flex-direction: column
+	@media screen and ( max-width: 500px )
+		flex-basis: 100%
+		align-items: center !important
 
 .footer
 	background: $dark
@@ -136,26 +206,12 @@ input[type='number']
 	align-items: center
 	color: $white
 	height: 60px
-
-.col-6
-	flex-basis: 50%
-	display: flex
-	align-items: center
 	justify-content: center
-	flex-direction: column
-	@media screen and ( max-width: 500px )
-		flex-basis: 100%
-
-.sc-bg3
-	background: url("../img/bg_03.jpg") no-repeat center center
-	background-size: cover
-	background-attachment: fixed
-	height: 400px
-.sc-bg5
-	background: url("../img/bg_05.jpg") no-repeat center center
-	background-size: cover
-	background-attachment: fixed
-	height: 400px
-
-p
-	flex-basis: 100%
+	&__title
+		font-weight: bold
+@media screen and ( max-width: 500px )
+	p
+		padding: 1rem
+		text-align: center
+	.section-img
+		clip-path: none
